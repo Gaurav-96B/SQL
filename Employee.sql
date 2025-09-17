@@ -370,6 +370,68 @@ WHERE Department = 'IT'
 ORDER BY Salary DESC
 LIMIT 3;
 
+51.Top 5 highest-paid employees in the company.
+------------------------------------------------------------------------------------------------------------------------------
+SELECT EmployeeID, FirstName, LastName, Department, Salary
+FROM Employees
+ORDER BY Salary DESC
+LIMIT 5;
+
+52.Lowest 3 salaries in the company
+----------------------------------------------------------------------------------------------------------------------------
+SELECT EmployeeID, FirstName, LastName, Department, Salary
+FROM Employees
+ORDER BY Salary ASC
+LIMIT 3;
+
+53.First 10 employees from the table (no ordering)
+-----------------------------------------------------------------------------------------------------------------------------
+SELECT *
+FROM Employees
+LIMIT 10;
+
+54.Top 3 most recently hired employees
+------------------------------------------------------------------------------------------------------------------------------
+SELECT EmployeeID, FirstName, LastName, Department, HireDate
+FROM Employees
+ORDER BY HireDate DESC
+LIMIT 3;
+
+55.Earliest 3 hired employees
+-------------------------------------------------------------------------------------------------------------------------------
+SELECT EmployeeID, FirstName, LastName, Department, HireDate
+FROM Employees
+ORDER BY HireDate ASC
+LIMIT 3;
+
+56.2nd highest-paid employee
+-------------------------------------------------------------------------------------------------------------------------------
+SELECT EmployeeID, FirstName, LastName, Department, Salary
+FROM Employees
+ORDER BY Salary DESC
+LIMIT 1 OFFSET 1;
+
+57.4th to 6th highest-paid employees
+--------------------------------------------------------------------------------------------------------------------------------
+SELECT EmployeeID, FirstName, LastName, Department, Salary
+FROM Employees
+ORDER BY Salary DESC
+LIMIT 3 OFFSET 3;
+
+58.Top 3 salaries in the IT department
+----------------------------------------------------------------------------------------------------------------------------------
+SELECT EmployeeID, FirstName, LastName, Department, Salary
+FROM Employees
+WHERE Department = 'IT'
+ORDER BY Salary DESC
+LIMIT 3;
+
+59.10th employee record from the Employees table
+----------------------------------------------------------------------------------------------------------------------------------------
+SELECT *
+FROM Employees
+LIMIT 1 OFFSET 9;
+
     
 
 
