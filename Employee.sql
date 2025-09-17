@@ -426,11 +426,49 @@ WHERE Department = 'IT'
 ORDER BY Salary DESC
 LIMIT 3;
 
-59.10th employee record from the Employees table
+59. 10th employee record from the Employees table
 ----------------------------------------------------------------------------------------------------------------------------------------
 SELECT *
 FROM Employees
 LIMIT 1 OFFSET 9;
+
+60. ALIAS
+-------------------------------------------------------------------------------------------------------------------------------------------
+SELECT FirstName AS FName, LastName AS LName, Salary AS MonthlySalary
+FROM Employees;
+
+SELECT Department, AVG(Salary) AS AvgSalary, COUNT(*) AS TotalEmployees
+FROM Employees
+GROUP BY Department;
+
+61. Pagination with limit
+------------------------------------------------------------------------------------------------------------------------------------------
+LIMIT → defines how many rows you want per page.
+OFFSET → defines how many rows to skip (based on the page number).
+
+Page 1 (rows 1–5)
+SELECT EmployeeID, FirstName, LastName, Salary
+FROM Employees
+ORDER BY Salary DESC
+LIMIT 5 OFFSET 0;
+
+Page 2 (rows 6–10)
+SELECT EmployeeID, FirstName, LastName, Salary
+FROM Employees
+ORDER BY Salary DESC
+LIMIT 5 OFFSET 5;
+
+Page 3 (rows 11–15)
+SELECT EmployeeID, FirstName, LastName, Salary
+FROM Employees
+ORDER BY Salary DESC
+LIMIT 5 OFFSET 10;
+
+OFFSET = (PageNumber - 1) * PageSize
+
+
+    
+
 
     
 
