@@ -218,6 +218,181 @@ GROUP BY Department
 HAVING COUNT(*) > 1
 ORDER BY TotalEmployees DESC;
 
+31.Find the department with the maximum number of employees.
+------------------------------------------------------------------------------------------------------
+SELECT TOP 1 Department, COUNT(*) AS TotalEmployees
+FROM Employees
+GROUP BY Department
+ORDER BY TotalEmployees DESC;
+
+32.List top 3 highest-paid employees in each department.
+--------------------------------------------------------------------------------------------------------
+   SELECT e.EmployeeID, e.FirstName, e.LastName, e.Department, e.Salary
+FROM Employees e
+WHERE (
+   SELECT COUNT(*)
+   FROM Employees e2
+   WHERE e2.Department = e.Department
+     AND e2.Salary > e.Salary
+) < 3
+ORDER BY e.Department, e.Salary DESC;
+
+33.Find departments where the average salary is greater than 70,000.
+-------------------------------------------------------------------------------------------------------------
+SELECT Department, AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY Department
+HAVING AVG(Salary) > 70000
+ORDER BY AvgSalary DESC;
+
+34.Find the average salary for each job title, but only show job titles with more than 1 employee.
+--------------------------------------------------------------------------------------------------------------
+SELECT JobTitle, AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY JobTitle
+HAVING COUNT(*) > 1
+ORDER BY AvgSalary DESC;
+
+35.Count how many employees share the same job title.
+---------------------------------------------------------------------------------------------------------------
+SELECT JobTitle, COUNT(*) AS TotalEmployees
+FROM Employees
+GROUP BY JobTitle
+ORDER BY TotalEmployees DESC;
+
+36.Departments with more than 3 employees.
+--------------------------------------------------------------------------------------------------------------
+SELECT Department, COUNT(*) AS TotalEmployees
+FROM Employees
+GROUP BY Department
+HAVING COUNT(*) > 3;
+
+37.Job titles where the average salary is greater than 70,000.
+-------------------------------------------------------------------------------------------------------------------
+SELECT JobTitle, AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY JobTitle
+HAVING AVG(Salary) > 70000;
+
+38.Departments where the maximum salary is above 90,000.
+----------------------------------------------------------------------------------------------------------------------
+SELECT Department, MAX(Salary) AS MaxSalary
+FROM Employees
+GROUP BY Department
+HAVING MAX(Salary) > 90000;
+
+39.Departments with at least 2 employees earning more than 75,000.
+-------------------------------------------------------------------------------------------------------------------------
+SELECT Department, COUNT(*) AS HighEarners
+FROM Employees
+WHERE Salary > 75000
+GROUP BY Department
+HAVING COUNT(*) >= 2;
+
+40.List years in which more than 2 employees were hired.
+------------------------------------------------------------------------------------------------------------------------
+SELECT YEAR(HireDate) AS HireYear, COUNT(*) AS TotalHired
+FROM Employees
+GROUP BY YEAR(HireDate)
+HAVING COUNT(*) > 2;
+
+41.Departments where the minimum salary is less than 55,000.
+---------------------------------------------------------------------------------------------------------------------------
+SELECT Department, MIN(Salary) AS MinSalary
+FROM Employees
+GROUP BY Department
+HAVING MIN(Salary) < 55000;
+
+42.Job titles that appear more than once.
+----------------------------------------------------------------------------------------------------------------------------
+SELECT JobTitle, COUNT(*) AS TitleCount
+FROM Employees
+GROUP BY JobTitle
+HAVING COUNT(*) > 1;
+
+43.Departments where the sum of all salaries is more than 250,000.
+-------------------------------------------------------------------------------------------------------------------------------
+SELECT Department, SUM(Salary) AS TotalSalary
+FROM Employees
+GROUP BY Department
+HAVING SUM(Salary) > 250000;
+
+44.Departments where the average salary is between 60,000 and 80,000.
+---------------------------------------------------------------------------------------------------------------------------------
+SELECT Department, AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY Department
+HAVING AVG(Salary) BETWEEN 60000 AND 80000;
+
+45.Departments with exactly 4 employees.
+------------------------------------------------------------------------------------------------------------------------------
+SELECT Department, COUNT(*) AS TotalEmployees
+FROM Employees
+GROUP BY Department
+HAVING COUNT(*) = 4;
+
+46.Departments with more than 3 employees, ordered by employee count (highest first).
+---------------------------------------------------------------------------------------------------------------------------
+SELECT Department, COUNT(*) AS TotalEmployees
+FROM Employees
+GROUP BY Department
+HAVING COUNT(*) > 3
+ORDER BY TotalEmployees DESC;
+
+47.Job titles that appear more than once, ordered by how many employees share the title.
+----------------------------------------------------------------------------------------------------------------------------
+SELECT JobTitle, COUNT(*) AS TitleCount
+FROM Employees
+GROUP BY JobTitle
+HAVING COUNT(*) > 1
+ORDER BY TitleCount DESC;
+
+48.Departments where the average salary is between 60,000 and 80,000, ordered by average salary.
+---------------------------------------------------------------------------------------------------------------------------
+SELECT Department, AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY Department
+HAVING AVG(Salary) BETWEEN 60000 AND 80000
+ORDER BY AvgSalary DESC;
+
+49.Find the second highest salary in the company
+---------------------------------------------------------------------------------------------------------------------------
+SELECT Salary
+FROM Employees
+ORDER BY Salary DESC
+LIMIT 1 OFFSET 1;-----skips the highest salary and picks the next one.
+
+50.Find the top 3 highest-paid employees in the IT department.
+-------------------------------------------------------------------------------------------------------------------------
+SELECT EmployeeID, FirstName, LastName, Department, Salary
+FROM Employees
+WHERE Department = 'IT'
+ORDER BY Salary DESC
+LIMIT 3;
+
+    
+
+
+
+    
+    
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
 
 
   
