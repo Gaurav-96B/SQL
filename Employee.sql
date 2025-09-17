@@ -466,6 +466,30 @@ LIMIT 5 OFFSET 10;
 
 OFFSET = (PageNumber - 1) * PageSize
 
+62.Get all unique departments
+---------------------------------------------------------------------------------------------------------------------------------------
+SELECT DISTINCT Department
+FROM Employees;
+
+63.Count how many unique departments exist
+-------------------------------------------------------------------------------------------------------------------------------------
+SELECT COUNT(DISTINCT Department) AS TotalDepartments
+FROM Employees;
+
+64.Get unique departments where salary > 70000
+--------------------------------------------------------------------------------------------------------------------------------------
+SELECT DISTINCT Department
+FROM Employees
+WHERE Salary > 70000;
+
+65.Top 5 distinct salaries
+---------------------------------------------------------------------------------------------------------------------------------------
+SELECT DISTINCT Salary
+FROM Employees
+ORDER BY Salary DESC
+LIMIT 5;
+
+
 
     
 
